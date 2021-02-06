@@ -1,5 +1,6 @@
 package com.Linkedin.Entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -18,6 +19,7 @@ public class Skill {
 
 
     @ManyToOne
-//    @JoinColumn(name = "uid")
+    @JoinColumn(name = "uid")
+    @JsonBackReference
     private User user;
 }

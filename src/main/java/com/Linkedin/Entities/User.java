@@ -1,5 +1,6 @@
 package com.Linkedin.Entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.OnDelete;
@@ -24,16 +25,16 @@ public class User {
 
 
     //            (mappedBy = "user")
-    @OneToMany(
-            mappedBy = "user",
-            cascade = CascadeType.ALL
-    )
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.LAZY)
+    @JsonManagedReference
     private List<Education> educations;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.LAZY)
+    @JsonManagedReference
     private List<Skill> skills;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.LAZY)
+    @JsonManagedReference
     private List<WorkExperience> workExperiences;
 
 

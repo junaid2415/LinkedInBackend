@@ -1,5 +1,6 @@
 package com.Linkedin.Entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -26,8 +27,7 @@ public class Education {
     private String fos;
 
     @ManyToOne
-    @JsonIgnore
-//    @JoinColumn(name = "uid")
-
+    @JoinColumn(name = "uid", nullable = false)
+    @JsonBackReference
     private User user;
 }
