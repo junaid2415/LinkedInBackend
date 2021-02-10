@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
+@RequestMapping("/api")
 public class EduController {
 
 
@@ -20,6 +21,8 @@ public class EduController {
     @GetMapping("/educations")
     public List<Education> getEducation(){ return eduService.getEducation();}
 
+    @GetMapping("/education/{id}")
+    public Education getEdu(@PathVariable long id){ return eduService.getEdu(id);}
 
     @PostMapping("/user/education/{id}")
     public void postEdu(@RequestBody Education education, @PathVariable long id){ eduService.postEdu(education,id);}

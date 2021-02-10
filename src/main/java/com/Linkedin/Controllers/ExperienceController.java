@@ -8,7 +8,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:4200")
+@RequestMapping("/api")
 public class ExperienceController {
     @Autowired
     private WorkExperienceService  workExperienceService;
@@ -19,7 +20,7 @@ public class ExperienceController {
     @PostMapping("/user/experience/{id}")
     public void postExp(@RequestBody WorkExperience workExperience, @PathVariable long id){ workExperienceService.postExp(workExperience, id); }
 
-    @PutMapping("/user/{uid}/education/{id}")
+    @PutMapping("/user/{uid}/experience/{id}")
     public void updateExp(@RequestBody WorkExperience workExperience,@PathVariable long id, @PathVariable long uid){ workExperienceService.updateExp(workExperience, id, uid);}
 
     @DeleteMapping("/experience/{id}")

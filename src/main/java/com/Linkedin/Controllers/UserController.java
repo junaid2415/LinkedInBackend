@@ -10,6 +10,7 @@ import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
+@RequestMapping("/api/user/")
 public class UserController {
 
 
@@ -17,20 +18,20 @@ public class UserController {
     private UserService userService;
 
 //    shortcut for @RequestMapping(value ="/users", method = RequestMethod.GET)
-    @GetMapping("/users")
+    @GetMapping("/all")
     public List<User> getUsers(){ return userService.getUsers();}
 
-    @PostMapping("/user")
+    @PostMapping("/")
     public void postUser(@RequestBody User user){
         userService.postUser(user);
     }
 
-    @GetMapping("user/{id}")
+    @GetMapping("/{id}")
     public User getUser(@PathVariable long id){
         return userService.getUser(id);
     }
 
-    @PutMapping("/user/{id}")
+    @PutMapping("/{id}")
     public void updateUser(@PathVariable long id, @RequestBody User user){ userService.updateUser(id,user);}
 
 
@@ -39,6 +40,6 @@ public class UserController {
         return "Demo Msg";
     }
 
-    @DeleteMapping("/user/{id}")
+    @DeleteMapping("/{id}")
     public void deleteUser(@PathVariable long id){ userService.deleteUser(id);}
 }

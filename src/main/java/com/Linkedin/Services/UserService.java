@@ -4,8 +4,6 @@ import com.Linkedin.Entities.User;
 import com.Linkedin.Repositories.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 
 
 import java.util.List;
@@ -27,12 +25,7 @@ public class UserService {
     }
 
     public void updateUser(long id, User user){
-        User temp = userRepo.findById(id).get();
-        temp.setUserName(user.getUserName());
-        temp.setPassword(user.getPassword());
-        temp.setFirstName(user.getFirstName());
-        temp.setLastName(user.getLastName());
-        temp.setProfilePic(user.getProfilePic());
+        user.setId(id);
         userRepo.save(user);
     }
 

@@ -20,6 +20,7 @@ public class EduService {
 
     public List<Education> getEducation(){ return eduRepo.findAll(); }
 
+    public Education getEdu(Long id){ return  eduRepo.findById(id).get();}
 
     public void postEdu(  Education education,   long id){
         education.setUser(userRepo.findById(id).get());

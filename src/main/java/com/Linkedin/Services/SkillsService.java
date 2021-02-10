@@ -30,8 +30,5 @@ public class SkillsService {
         skillsRepo.save(skills);
     }
 
-    public void delSkills(  Long id){
-        skillsRepo.delete(skillsRepo.findById(id).get());
-
-    }
+    public void delSkills(  Long id){ skillsRepo.delete(skillsRepo.findById(id).get()); }
 }
