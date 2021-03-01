@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
@@ -22,8 +23,15 @@ public class UserController {
     public List<User> getUsers(){ return userService.getUsers();}
 
     @PostMapping("/")
-    public void postUser(@RequestBody User user){
-        userService.postUser(user);
+    public Optional<User> postUser(@RequestBody User user)
+    {
+       return userService.postUser(user);
+    }
+
+    @GetMapping("/login/{username}")
+    public Optional<User> getUserByName(@PathVariable String username)
+    {
+        return  userService.getUserByName(username);
     }
 
     @GetMapping("/{id}")

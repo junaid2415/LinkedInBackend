@@ -18,6 +18,8 @@ public class SkillController {
     @GetMapping("/skills")
     public List<Skill> getSkills(){ return skillsService.getskills();}
 
+    @GetMapping("/skills/{id}")
+    public Skill getSkillByID(@PathVariable Long id){ return  skillsService.getSkill(id);}
 
     @PostMapping("/user/skill/{id}")
     public void postEdu(@RequestBody Skill skill, @PathVariable long id){ skillsService.postSkills(skill,id);}
@@ -28,5 +30,5 @@ public class SkillController {
     @DeleteMapping("/skill/{id}")
     public void delEdu(@PathVariable Long id){ skillsService.delSkills(id);}
     
-    
+
 }

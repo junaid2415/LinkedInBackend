@@ -19,6 +19,8 @@ public class SkillsService {
 
     public List<Skill> getskills(){ return skillsRepo.findAll(); }
 
+    public Skill getSkill(Long id){return skillsRepo.findById(id).get() ;}
+
     public void postSkills(  Skill skills,   long id){
         skills.setUser(userRepo.findById(id).get());
         skillsRepo.save(skills);
